@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+#this imports the include ability which makes our modular building block links
+from rango import views
+#this links our rango views app to this urls file
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    #this adds the url mapping from the views of our app to our site
+    path('rango/', include('rango.urls')),
+    #this maps any urls stating with rango/ to be handled by our rango app
+    #with this we need to make a urls bit in our rango app to handle this request
     path('admin/', admin.site.urls),
 ]

@@ -2,6 +2,7 @@
 
 {% load staticfiles %}
 
+
 <html>
 	<head>
 		<title>Rango</title>
@@ -10,12 +11,13 @@
 	<body>
 		<h1>Rango says...</h1>
 		<div>
-			hey there partner! <br />
+			here is the about page. <br />
 			<strong>{{ boldmessage }}</strong><br />
 		</div>
 		<div>
-			<a href="/rango/about/">About</a><br />
-			<img src="{% static 'images/rango.jpg' %}" alt="Image of Rango" />
+			<a href="/rango/">Index</a><br />
+			<img src="{% static 'images/rango.jpg' %}" alt="Image of Rango" /><br /><br />
+			<img src="{{ MEDIA_URL }}" alt="Image of cats" />
 		</div>
 	</body>
 </html>

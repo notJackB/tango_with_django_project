@@ -19,6 +19,9 @@ from django.urls import include
 #this imports the include ability which makes our modular building block links
 from rango import views
 #this links our rango views app to this urls file
+from django.conf import settings
+#get the settings .py file imported in to get access to static and media
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -27,4 +30,4 @@ urlpatterns = [
     #this maps any urls stating with rango/ to be handled by our rango app
     #with this we need to make a urls bit in our rango app to handle this request
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

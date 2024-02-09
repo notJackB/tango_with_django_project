@@ -9,5 +9,7 @@ def index(request):
     #return the template response
 
 def about(request):
-    #our link from about to index with pathing
-    return HttpResponse("Rango says here is the about page. <a href= '/rango/'>Index</a>")
+    context_dict= {'boldmessage': 'This tutorial has been put together by Jack B',
+                   'MEDIA_URL': '/media/cat.jpg'}
+    return render(request, 'rango/about.html', context= context_dict)
+    #return the template response

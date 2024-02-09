@@ -2,9 +2,16 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+from rango.models import Category, Page
+
 def index(request):
-    context_dict= {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
-    #this passes the key 'bold_message' into index.html's {{ bold_message }}
+    category_list = Category.objects.order_by('-likes')[:5]
+    context_dict= {}
+    #creates a context dictionary for data to be passed into template
+    context_dict['boldmessage']= 'Crunchy, creamy, cookie, candy, cupcake!'
+    #this passes the key 'boldmessage' into index.html's {{ bold_message }}
+    context_dict['categories']= category_list
+    #passing the var set in category list by mapping it to key within context dict
     return render(request, 'rango/index.html', context= context_dict)
     #return the template response
 
